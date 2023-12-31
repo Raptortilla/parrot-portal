@@ -33,7 +33,7 @@ const Form = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
           <img
             src={LogoBrandPNG}
-            alt="PowerBeans logo + brand"
+            alt="Logo + brand"
             loading="lazy"
             style={{ width: '200px' }}
           />
