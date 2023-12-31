@@ -1,22 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/Login';
-import { Typography } from '@mui/material';
-
-const Home = () => {
-  return (
-    <div className="App">
-      <Typography variant="h3">Testing fonts</Typography>
-    </div>
-  );
-};
+import HomePage from './pages/Home';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
 
-      <Route path="*" element={<Home />} />
+      <Route path="*" element={<HomePage />} />
     </Routes>
   );
 }
