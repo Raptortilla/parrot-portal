@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
+const Home = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +21,16 @@ function App() {
         </a>
       </header>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+
+      <Route path="*" element={<Home />} />
+    </Routes>
   );
 }
 
