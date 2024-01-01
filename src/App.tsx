@@ -1,15 +1,21 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
+import { getCurrentUser } from './services/authentication';
 
 function App() {
-  console.log(process.env.COGNITO_USER_POOL_ID);
+  if (!getCurrentUser())
+    return (
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    );
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-
-      <Route path="*" element={<HomePage />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
