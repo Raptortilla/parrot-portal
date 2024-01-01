@@ -15,6 +15,7 @@ import LogoBlackPNG from '../../assets/images/logo-black.png';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../services/authentication';
 
 type TProps = {
   height?: string; // In px
@@ -75,14 +76,19 @@ const TopBar = ({ height = '64px' }: TProps) => {
               <MenuItem onClick={handleClose}>Profile</MenuItem>
               <MenuItem onClick={handleClose}>My account</MenuItem>
               <Divider />
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={() => null}>
                 <ListItemIcon>
                   <Settings fontSize="small" />
                 </ListItemIcon>
-                Log out
+                Settings
               </MenuItem>
 
-              <MenuItem onClick={() => navigate('/login', { replace: true })}>
+              <MenuItem
+                onClick={() => {
+                  logout();
+                  navigate('/', { replace: true });
+                }}
+              >
                 <ListItemIcon>
                   <Logout fontSize="small" />
                 </ListItemIcon>
