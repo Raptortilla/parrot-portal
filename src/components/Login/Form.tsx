@@ -1,5 +1,11 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box, Button, Card, CardContent } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CircularProgress,
+} from '@mui/material';
 import OutlinedTextField from '../common/OutlinedTextField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +16,7 @@ const Form = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const validate = () => {
@@ -19,15 +26,21 @@ const Form = () => {
 
   const handleLogin = () => {
     // TODO: log in logic
+    setLoading(true);
 
     authenticate(email, password)
-      .then((data) => setTimeout(() => (window.location.href = '/'), 2500))
-      .catch((err) => console.log(err));
+      .then((data) => (window.location.href = '/'))
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   return (
     <Card sx={{ minWidth: 350 }}>
       <CardContent
+        component="form"
+        onSubmit={(e) => e.preventDefault()}
         sx={{
           justifyContent: 'center',
           display: 'flex',
@@ -58,8 +71,18 @@ const Form = () => {
           onChange={setPassword}
           containerStyles={{ mb: 3 }}
         />
-        <Button variant="contained" onClick={handleLogin}>
-          Log in
+        <Button
+          variant="contained"
+          onClick={handleLogin}
+          type="submit"
+          disabled={loading}
+          sx={{ height: '36px' }}
+        >
+          {loading ? (
+            <CircularProgress color="secondary" size={16} />
+          ) : (
+            'Log in'
+          )}
         </Button>
       </CardContent>
     </Card>
