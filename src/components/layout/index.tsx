@@ -15,7 +15,7 @@ const MainLayout = ({ children }: TProps) => {
       <TopBar height={TOPBAR_HEIGHT} />
       <Box sx={{ display: 'flex' }}>
         <SideBar topBarHeight={TOPBAR_HEIGHT} />
-        <Container sx={{ pt: TOPBAR_HEIGHT }}>{children}</Container>
+        <Container sx={{ mt: TOPBAR_HEIGHT, pt: 4 }}>{children}</Container>
       </Box>
     </>
   );
