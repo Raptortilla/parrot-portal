@@ -4,6 +4,7 @@ import OutlinedTextField from '../common/OutlinedTextField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoBrandPNG from '../../assets/images/gabarito-b-log-brand.png';
+import { authenticate } from '../../services/authentication';
 
 const Form = () => {
   const [email, setEmail] = useState<string>('');
@@ -18,7 +19,10 @@ const Form = () => {
 
   const handleLogin = () => {
     // TODO: log in logic
-    navigate('/', { replace: true });
+
+    authenticate(email, password)
+      .then((data) => setTimeout(() => (window.location.href = '/'), 2500))
+      .catch((err) => console.log(err));
   };
 
   return (
