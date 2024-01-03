@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import OutlinedTextField from '../common/OutlinedTextField';
 import { useState } from 'react';
-import LogoBrandPNG from '../../assets/images/gabarito-b-log-brand.png';
+import LogoBrandPNG from '../../assets/images/logo-brand-b.png';
 import { authenticate } from '../../services/authentication';
 
 const Form = () => {
