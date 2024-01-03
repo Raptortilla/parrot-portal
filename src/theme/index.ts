@@ -7,7 +7,7 @@ const theme = createTheme({
     secondary,
   },
   typography: {
-    fontFamily: 'Gabarito',
+    fontFamily: 'IBM Plex Sans',
   },
 });
 
